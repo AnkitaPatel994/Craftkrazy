@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#66e0ff</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#e23dc2e4</color>
+    <color name="button_pressed">#2fd0f9</color>
+    <color name="button_focused">#2fd0f9</color>
+    <color name="colorDefault">#999595</color>
+    <color name="colorGray">@android:color/darker_gray</color>
+    <color name="colorWhite">#ffffff</color>
+</resources>
+
+

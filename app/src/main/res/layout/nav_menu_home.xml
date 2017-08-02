@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ankita.craftkrazy.Activity.HomeActivity">
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/colorDefault"
+        android:layout_marginTop="10dp"
+        android:id="@+id/view"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:text="Track Order"
+        android:id="@+id/txtTorder"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Share App"
+        android:id="@+id/txtShareApp"
+        android:layout_below="@+id/txtTorder"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate app"
+        android:id="@+id/txtRateApp"
+        android:layout_below="@+id/txtShareApp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        android:layout_below="@+id/txtRateApp"
+        android:id="@+id/txtNotification"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"/>
+
+</RelativeLayout>

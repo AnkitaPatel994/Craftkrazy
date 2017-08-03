@@ -54,10 +54,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     SliderLayout sliderLayout;
     ArrayList<HashMap<String,String>> ImgList=new ArrayList<>();
     String url= Common.SERVICE_URL;
-    HashMap<String,String > con;
+    String urlMain= MainActivity.Main_URL;
+
     JSONArray slider;
     JSONObject jsonObject;
     TextView txtSign,txtSearch;
+
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.Adapter adapter;
@@ -308,12 +310,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         protected Void doInBackground(Void... params) {
             String response;
             HttpHandler h=new HttpHandler();
-            response= h.serverConnection(url);
+            response= h.serverConnection(urlMain+"Slider.php");
             if(response!=null)
             {
                 try {
                     jsonObject=new JSONObject(response);
-                    slider=jsonObject.getJSONArray("Slider");
+                    slider=jsonObject.getJSONArray("slider");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -335,27 +337,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onPostExecute(aVoid);
             for (int i=0;i<slider.length();i++)
             {
-                con = new HashMap<>();
+                HashMap<String,String > con = new HashMap<>();
+                try {
+                    JSONObject j = slider.getJSONObject(i);
+                    String s_banner = j.getString("s_banner");
 
-                JSONObject j = null;
-                try {
-                    j = slider.getJSONObject(i);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                String img = null;
-                int approval = 0;
-                try {
-                    img = j.getString("img");
-                    approval=j.getInt("apporval");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if(approval == 1)
-                {
-                    con.put(String.valueOf(i),img);
+                    con.put(String.valueOf(i),s_banner);
                     ImgList.add(con);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+
                 for (int i1 = i; i1 <=i; i1++) {
                     for (String name : con.keySet()) {
                         DefaultSliderView textSliderView = new DefaultSliderView(HomeActivity.this);
@@ -388,26 +381,26 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         protected Void doInBackground(Void... params) {
             String response;
             HttpHandler h=new HttpHandler();
-            response= h.serverConnection(url);
+            response= h.serverConnection(urlMain+"Maincategory.php");
             if(response!=null)
             {
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    JSONArray slider=jsonObject.getJSONArray("Main Category");
+                    JSONArray slider=jsonObject.getJSONArray("main_category");
                     for (int i=0;i<slider.length();i++)
 
                     {
-                        HashMap<String,String > con = new HashMap<>();
+                        HashMap<String,String > hmMainCat = new HashMap<>();
                         JSONObject j=slider.getJSONObject(i);
 
-                        String name=j.getString("m_name");
-                        String img=j.getString("m_img");
+                        String mc_name=j.getString("mc_name");
+                        String mc_image=j.getString("mc_image");
 
-                        con.put("name",name);
+                        hmMainCat.put("mc_name",mc_name);
                         //con.put("img",Common.SERVICE_IMG_URL +img);
-                        con.put("img",img);
+                        hmMainCat.put("mc_image",mc_image);
 
-                        mCatList.add(con);
+                        mCatList.add(hmMainCat);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

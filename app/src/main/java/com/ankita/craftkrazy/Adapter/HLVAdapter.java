@@ -44,10 +44,10 @@ public class HLVAdapter extends RecyclerView.Adapter<HLVAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        final String mainCatname= mCategory.get(i).get("name");
+        final String mainCatname= mCategory.get(i).get("mc_name");
         viewHolder.txtName.setText(mainCatname);
 
-        String url = mCategory.get(i).get("img");
+        String url = mCategory.get(i).get("mc_image");
 
         DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
                 .cacheOnDisc(true).cacheInMemory(true)
